@@ -1,0 +1,344 @@
+/* ---------- Card ---------- */
+.claim-card {
+  position: relative;
+  padding: clamp(20px, 2.6vw, 28px);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-lg);
+}
+
+.claim-card:focus {
+  outline: none;
+}
+
+.claim-card__head {
+  margin-bottom: var(--space-5);
+}
+
+.claim-card__title {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.claim-card__intro {
+  margin-top: var(--space-2);
+  color: var(--ink-subtle);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+/* ---------- Grid (compact: 16px rows, 10px columns) ---------- */
+.claim-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4) 10px;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 479px) {
+  .claim-form__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Floating-label field ---------- */
+.field {
+  position: relative;
+}
+
+.field__control {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 20px 14px 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1rem; /* 16px prevents iOS zoom on focus */
+  line-height: 22px;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.field__control:hover {
+  border-color: #b0b0b6;
+}
+
+.field__control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--focus-ring);
+}
+
+.field__control::placeholder {
+  color: transparent;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.field__control:focus::placeholder {
+  color: var(--ink-subtle);
+}
+
+.field__label {
+  position: absolute;
+  top: 14px;
+  left: 15px;
+  right: 14px;
+  overflow: hidden;
+  color: var(--ink-subtle);
+  font-size: 1rem;
+  line-height: 22px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.field:focus-within .field__label,
+.field[data-filled='true'] .field__label {
+  transform: translateY(-8px) scale(0.75);
+}
+
+/* Select */
+.field--select .field__label {
+  right: 40px;
+}
+
+.field--select .field__control {
+  padding-right: 40px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+
+.field--select[data-filled='false'] .field__control {
+  color: transparent;
+}
+
+.field--select option {
+  color: var(--ink);
+}
+
+.field__chevron {
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  color: var(--ink-subtle);
+  pointer-events: none;
+}
+
+/* Error state */
+.field[data-invalid='true'] .field__control {
+  border-color: var(--danger);
+  background: var(--danger-surface);
+}
+
+.field[data-invalid='true'] .field__control:focus {
+  box-shadow: var(--focus-ring-danger);
+}
+
+.field[data-invalid='true'] .field__label {
+  color: var(--danger);
+}
+
+/* Errors sit inside the 16px row gap, so they never push fields around */
+.field__error {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 2px;
+  right: 0;
+  color: var(--danger);
+  font-size: 0.6875rem;
+  line-height: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.field__error:empty {
+  display: none;
+}
+
+.field__control:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 40px #f2f7fe inset;
+  -webkit-text-fill-color: var(--ink);
+}
+
+/* ---------- Consent ---------- */
+.consent {
+  position: relative;
+  margin-top: var(--space-5);
+}
+
+.consent__label {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 10px;
+  color: var(--ink-subtle);
+  font-size: var(--text-legal);
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+}
+
+.consent__label a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Collapsed to 3 lines; the full disclosure stays in the DOM for screen readers and tracking */
+.consent__text[data-expanded='false'] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.consent__toggle {
+  margin: 2px 0 0 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--link);
+  font-size: var(--text-legal);
+  font-weight: 500;
+}
+
+.consent__toggle:hover {
+  text-decoration: underline;
+}
+
+.consent__box {
+  -webkit-appearance: none;
+  appearance: none;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  border: 1.5px solid #86868b;
+  border-radius: 5px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.consent__box::after {
+  content: '';
+  width: 9px;
+  height: 5px;
+  margin-top: -2px;
+  border: solid #fff;
+  border-width: 0 0 2px 2px;
+  transform: rotate(-45deg) scale(0);
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+
+.consent__box:checked {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.consent__box:checked::after {
+  transform: rotate(-45deg) scale(1);
+}
+
+.consent__box:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.consent[data-invalid='true'] .consent__box {
+  border-color: var(--danger);
+}
+
+.consent__error {
+  position: static;
+  margin: var(--space-1) 0 0 28px;
+  white-space: normal;
+}
+
+/* ---------- Submit + states ---------- */
+.claim-form__submit {
+  margin-top: var(--space-5);
+  font-weight: 500;
+}
+
+.claim-form__submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.claim-form__submit .spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.claim-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--danger-surface);
+  color: var(--danger);
+  font-size: var(--text-sm);
+}
+
+.claim-alert svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.claim-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-10) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--success-surface);
+  color: var(--success);
+  text-align: center;
+  font-size: var(--text-lead);
+  font-weight: 600;
+}
+
+.claim-success:focus {
+  outline: none;
+}
+
+.claim-success__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(29, 138, 59, 0.12);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .claim-success,
+  .claim-alert {
+    animation: enter 420ms var(--ease-spring) both;
+  }
+}

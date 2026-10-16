@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mvaclaims.allinsuranceshop.com/sitemap.xml

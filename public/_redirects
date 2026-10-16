@@ -1,0 +1,4 @@
+# Netlify: serve the SPA for every client-side route (/, /privacy-policy, /terms, legacy URLs).
+# If the claim backend lives on another server, add a proxy rule ABOVE this line, e.g.:
+# /mva.aspx  https://your-backend.example.com/mva.aspx  200
+/*    /index.html   200

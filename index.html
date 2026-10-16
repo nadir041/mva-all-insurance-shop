@@ -1,0 +1,129 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MVA All Insurance Shop</title>
+  <meta name="description"
+    content="MVA All Insurance Shop helps motor vehicle accident victims navigate their claims with expert legal and medical referral support. Get a free consultation today." />
+  <meta name="keywords"
+    content="MVA claims, motor vehicle accident, accident claims, MVA All Insurance Shop, personal injury, free MVA consultation" />
+  <meta name="theme-color" content="#f5f5f7" />
+  <link rel="canonical" href="https://mvaclaims.allinsuranceshop.com/" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MVA All Insurance Shop" />
+  <meta property="og:title" content="MVA All Insurance Shop" />
+  <meta property="og:description"
+    content="MVA All Insurance Shop helps motor vehicle accident victims navigate their claims with expert legal and medical referral support. Get a free consultation today." />
+  <meta property="og:url" content="https://mvaclaims.allinsuranceshop.com/" />
+  <meta property="og:image" content="https://mvaclaims.allinsuranceshop.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Trustedform or IP script -->
+  <script type="text/javascript">
+    function myCallbackFunction(token) {
+      var field = document.querySelector("#leadid_token");
+      if (field) {
+        field.setAttribute('value', token);
+      }
+    }
+  </script>
+
+  <script id="LeadiDscript" type="text/javascript">
+    (function () {
+      var s = document.createElement('script');
+      s.id = 'LeadiDscript_campaign';
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//create.lidstatic.com/campaign/01ee7492-3876-b0aa-cb87-d45c20fccc49.js?snippet_version=2&f=reset&callback=myCallbackFunction';
+      var LeadiDscript = document.getElementById('LeadiDscript');
+      LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+    })();
+  </script>
+  <noscript><img
+      src='//create.leadid.com/noscript.gif?lac=675C7AD0-766C-086F-2192-FC4BF16CACF6&lck=01ee7492-3876-b0aa-cb87-d45c20fccc49&snippet_version=2' /></noscript>
+
+
+  <script>jQuery(document).ready(function ($) {
+      function getUserIP(callback) {
+        $.getJSON('https://api.ipify.org?format=json', function (data) {
+          var userIP = data.ip;
+          callback(userIP);
+        });
+      }
+
+      // Set the user's IP address as the value of the hidden input field
+      getUserIP(function (ip) {
+        $('#user_ip').val(ip);
+      });
+    });
+  </script>
+
+
+  <style>
+    .wpcf7-form-control wpcf7-number wpcf7-validates-as-required wpcf7-validates-as-number {
+      border: 1px solid black;
+    }
+  </style>
+
+
+  <!-- TrustedForm -->
+  <script type="text/javascript">
+    (function () {
+      var tf = document.createElement('script');
+      tf.type = 'text/javascript';
+      tf.async = true;
+      tf.src = ("https:" == document.location.protocol ? 'https' : 'http') +
+        '://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&l=' +
+        new Date().getTime() + Math.random();
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tf, s);
+    })();
+  </script>
+  <noscript>
+    <img src='https://api.trustedform.com/ns.gif' />
+  </noscript>
+  <!-- End TrustedForm -->
+
+
+
+  <!-- Jornaya script  -->
+  <script id="LeadiDscript" type="text/javascript">
+    (function () {
+      var s = document.createElement('script');
+      s.id = 'LeadiDscript_campaign';
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//create.lidstatic.com/campaign/a3bb25d6-fb63-ce2d-40d7-abf8ddbf4412.js?snippet_version=2&f=reset';
+      var LeadiDscript = document.getElementById('LeadiDscript');
+      LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+    })();
+  </script>
+  <noscript><img
+      src='//create.leadid.com/noscript.gif?lac=CFBB81D5-5046-D129-5AFF-BADB527DE7D2&lck=a3bb25d6-fb63-ce2d-40d7-abf8ddbf4412&snippet_version=2' /></noscript>
+
+
+  <!-- End Jornaya script  -->
+
+</head>
+
+<body>
+  <noscript>
+    <p style="padding:16px;font-family:system-ui,sans-serif">
+      Please enable JavaScript to use MVA All Insurance Shop, or call +7274053157.
+    </p>
+  </noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

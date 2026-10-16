@@ -1,0 +1,82 @@
+/* Design tokens — modeled on Apple's Human Interface / apple.com visual language. */
+:root {
+  /* Color */
+  --ink: #1d1d1f;
+  --ink-muted: #424245;
+  --ink-subtle: #6e6e73;
+  --surface: #ffffff;
+  --surface-alt: #f5f5f7;
+  --surface-dark: #000000;
+  --surface-dark-2: #1d1d1f;
+  --border: #e8e8ed;
+  --border-strong: #d2d2d7;
+  --accent: #0071e3; /* Apple blue — primary actions */
+  --accent-hover: #0077ed;
+  --link: #0066cc;
+  --link-on-dark: #2997ff;
+  --on-dark: #f5f5f7;
+  --on-dark-muted: #a1a1a6;
+  --line-on-dark: rgba(255, 255, 255, 0.14);
+  --brand-gold: #c9a227; /* from the original brand, used sparingly */
+
+  --danger: #e30000;
+  --danger-surface: #fff2f2;
+  --success: #1d8a3b;
+  --success-surface: #f0faf3;
+  --focus-ring: 0 0 0 4px rgba(0, 113, 227, 0.22);
+  --focus-ring-danger: 0 0 0 4px rgba(227, 0, 0, 0.14);
+
+  /* Typography — San Francisco on Apple devices; Inter as the closest fallback elsewhere */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter Variable', 'Helvetica Neue',
+    Helvetica, Arial, sans-serif;
+  --text-display: clamp(2.5rem, 1.6rem + 3.2vw, 4rem);
+  --text-h2: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --text-h3: 1.3125rem;
+  --text-lead: clamp(1.1875rem, 1.1rem + 0.35vw, 1.3125rem);
+  --text-body: 1.0625rem; /* 17px — Apple body size */
+  --text-sm: 0.9375rem;
+  --text-xs: 0.8125rem;
+  --text-legal: 0.75rem;
+  --text-eyebrow: 1.0625rem;
+  --leading-body: 1.47;
+  --tracking-tight: -0.015em;
+  --tracking-display: -0.025em;
+
+  /* Spacing — 8pt scale with 4pt half-steps */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --section-y: clamp(72px, 6vw + 40px, 128px);
+
+  /* Layout */
+  --container: 1120px;
+  --gutter: clamp(20px, 4vw, 32px);
+  --header-h: 52px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-pill: 980px;
+
+  /* Elevation (Apple keeps shadows very soft) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.28, 0.11, 0.32, 1);
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 800ms;
+}
