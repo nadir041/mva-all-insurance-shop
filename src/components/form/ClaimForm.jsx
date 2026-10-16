@@ -17,61 +17,44 @@ export default function ClaimForm({ id = 'contact' }) {
   const [consentExpanded, setConsentExpanded] = useState(false);
   const [status, setStatus] = useState('idle'); // idle | sending | sent | failed
   const [summary, setSummary] = useState('');
+  const [userIP, setUserIP] = useState('');
 
   useEffect(() => {
     if (status === 'sent') successRef.current?.focus();
   }, [status]);
 
-
-
-// chatgpt
-
-
-  useEffect(() => {
-    if (status === 'sent') successRef.current?.focus();
-  }, [status]);
-
-  // Fetch the visitor's public IP address
+  // Fetch the visitor's public IP and store it in React state.
   useEffect(() => {
     let cancelled = false;
 
     async function fetchUserIP() {
       try {
-        const response = await fetch(
-          'https://api.ipify.org?format=json'
-        );
-
-        if (!response.ok) {
-          throw new Error('IP lookup failed');
-        }
+        const response = await fetch('https://api.ipify.org?format=json');
+        if (!response.ok) throw new Error('IP lookup failed');
 
         const data = await response.json();
-
-        if (!cancelled) {
-          const field = formRef.current?.querySelector('#user_ip');
-
-          if (field) {
-            field.value = data.ip;
-            console.log('Automatic IP populated:', data.ip);
-          } else {
-            console.error('user_ip field not found');
-          }
+        if (!cancelled && data.ip) {
+          setUserIP(data.ip);
+          window.mvaUserIP = data.ip;
         }
       } catch (error) {
-        console.error('Could not fetch user IP:', error);
+        console.warn('Could not fetch user IP:', error);
       }
     }
 
     fetchUserIP();
-
     return () => {
       cancelled = true;
     };
   }, []);
 
-  // const fieldByName = (name) => FIELDS.find((f) => f.name === name);
-
-// chatgpt end
+  // Preserve a LeadID token if its callback ran before React rendered the form.
+  useEffect(() => {
+    const field = formRef.current?.querySelector('#leadid_token');
+    if (field && window.mvaLeadIdToken) {
+      field.value = window.mvaLeadIdToken;
+    }
+  }, []);
 
   const fieldByName = (name) => FIELDS.find((f) => f.name === name);
 
@@ -120,10 +103,17 @@ export default function ClaimForm({ id = 'contact' }) {
     setSummary('');
     setStatus('sending');
     try {
-      // Same payload as the original: the form's own FormData.
-      await submitClaim(new FormData(formRef.current));
+      const formData = new FormData(formRef.current);
+      formData.set('user_ip', userIP || window.mvaUserIP || '');
+      formData.set(
+        'leadid_token',
+        formRef.current?.querySelector('#leadid_token')?.value || window.mvaLeadIdToken || ''
+      );
+
+      await submitClaim(formData);
       setStatus('sent');
-    } catch {
+    } catch (error) {
+      console.error('Claim submission failed:', error);
       setStatus('failed');
     }
   };
@@ -208,8 +198,8 @@ export default function ClaimForm({ id = 'contact' }) {
             </p>
           </div>
 
-          <input type="hidden" id="user_ip" name="user_ip" value="" />
-          <input type="hidden" id="leadid_token" name="leadid_token" value="" />
+          <input type="hidden" id="user_ip" name="user_ip" value={userIP} readOnly />
+          <input type="hidden" id="leadid_token" name="leadid_token" defaultValue="" />
 
           {status === 'failed' && (
             <div className="claim-alert" role="alert">
